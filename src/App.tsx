@@ -1,25 +1,27 @@
-import { Container, Typography, Button, Box } from '@mui/material';
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { darkTheme } from './theme/theme';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Music from './pages/Music';
+import Photography from './pages/Photography';
+import Projects from './pages/Projects';
 
-function App() {
-  const handleLogin = () => {
-    // TODO: integrate authentication
-  };
-
+export default function App() {
   return (
-    <Container maxWidth="sm">
-      <Box sx={{ textAlign: 'center', mt: 8 }}>
-        <Typography variant="h3" gutterBottom>
-          Minglong's Music Club
-        </Typography>
-        <Typography variant="body1" sx={{ mb: 4 }}>
-          A personal space for music, photography, and ideas.
-        </Typography>
-        <Button variant="contained" color="primary" onClick={handleLogin}>
-          Login
-        </Button>
-      </Box>
-    </Container>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <BrowserRouter>
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/music" element={<Music />} />
+            <Route path="/photography" element={<Photography />} />
+            <Route path="/projects" element={<Projects />} />
+          </Routes>
+        </Box>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
-
-export default App;

@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# AI tooling
+.kiro/
+IMPLEMENTATION_STATUS.md
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
